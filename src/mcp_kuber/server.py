@@ -50,6 +50,22 @@ def list_services(namespace: str = "default", all_namespaces: bool = False) -> l
     return [fmt.service(s) for s in svcs.items]
 
 
+@mcp.tool
+def get_pod_logs(pod: str, namespace: str = "default", container: str | None = None, tail_lines: int = 100) -> str:
+    """Return the last `tail_lines` log lines of a pod (optionally a specific container)."""
+    return k8s.core().read_namespaced_pod_log(
+        pod, namespace, container=container, tail_lines=min(max(tail_lines, 1), 1000)
+    )
+
+
+@mcp.tool
+def list_events(namespace: str = "default", limit: int = 50) -> list[dict]:
+    """List recent events in a namespace, newest last. Useful for debugging failing pods."""
+    events = k8s.core().list_namespaced_event(namespace).items
+    events.sort(key=lambda e: e.last_timestamp or e.event_time or e.metadata.creation_timestamp)
+    return [fmt.event(e) for e in events[-limit:]]
+
+
 def main() -> None:
     mcp.run()
 
