@@ -78,7 +78,7 @@ logs and events by itself. It cannot change anything, so it is safe to point at 
   in-cluster config. Secrets are not exposed by any tool, and the secrets API is never called.
 - There is no write mode and no allowlist yet. For stricter access, use a kubeconfig whose user
   has a read-only RBAC role.
-- Pod logs can contain sensitive data, and they are sent to the model.
+- Pod logs can contain sensitive data and attacker-controlled text, so the tool sanitizes and truncates log excerpts before passing them to the model.
 
 ## Configuration
 
