@@ -1,5 +1,5 @@
 [project]
-name = "mcp-kuber"
+name = "kubescout-mcp"
 version = "0.1.0"
 description = "Read-only Kubernetes MCP server built with FastMCP"
 readme = "README.md"
@@ -10,7 +10,7 @@ dependencies = ["fastmcp>=2.0", "kubernetes>=29.0"]
 dev = ["pytest"]
 
 [project.scripts]
-mcp-kuber = "mcp_kuber.server:main"
+kubescout-mcp = "kubescout_mcp.server:main"
 
 [build-system]
 requires = ["setuptools>=68"]

@@ -5,7 +5,7 @@ from . import formatters as fmt
 from . import k8s
 
 mcp = FastMCP(
-    "mcp-kuber",
+    "kubescout-mcp",
     instructions="Read-only tools to inspect a Kubernetes cluster (nodes, namespaces, workloads, logs, events).",
 )
 

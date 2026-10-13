@@ -1,16 +1,16 @@
-# mcp-kuber
+# kubescout-mcp
 
 A read-only Kubernetes MCP server for Claude Code, built with FastMCP in Python.
 
 <!-- Demo: add a GIF here (under 20 seconds) showing Claude Code diagnosing a failing pod
-     with mcp-kuber, from the question to the root cause. -->
+     with kubescout-mcp, from the question to the root cause. -->
 
 ## Quick start
 
 Install:
 
 ```bash
-git clone <this-repo-url> mcp-kuber && cd mcp-kuber
+git clone <this-repo-url> kubescout-mcp && cd kubescout-mcp
 python3 -m venv .venv
 .venv/bin/pip install -e .
 ```
@@ -18,11 +18,11 @@ python3 -m venv .venv
 Add it to Claude Code:
 
 ```bash
-claude mcp add --scope user mcp-kuber -- $(pwd)/.venv/bin/mcp-kuber
+claude mcp add --scope user kubescout-mcp -- $(pwd)/.venv/bin/kubescout-mcp
 claude mcp list
 ```
 
-The list should show `mcp-kuber ... Connected`. Restart your Claude Code session, then try:
+The list should show `kubescout-mcp ... Connected`. Restart your Claude Code session, then try:
 
 ```text
 List all pods in every namespace and tell me which ones are not ready.
@@ -109,14 +109,14 @@ make down    # deletes the cluster
 .venv/bin/pytest
 ```
 
-The tests cover the formatters in `src/mcp_kuber/formatters.py`. The tools themselves were checked
+The tests cover the formatters in `src/kubescout_mcp/formatters.py`. The tools themselves were checked
 by hand against a k3d cluster.
 
 Layout:
 
-- `src/mcp_kuber/server.py`: FastMCP server and tool definitions.
-- `src/mcp_kuber/k8s.py`: lazy kubeconfig loading and API clients.
-- `src/mcp_kuber/formatters.py`: turns API objects into small dicts.
+- `src/kubescout_mcp/server.py`: FastMCP server and tool definitions.
+- `src/kubescout_mcp/k8s.py`: lazy kubeconfig loading and API clients.
+- `src/kubescout_mcp/formatters.py`: turns API objects into small dicts.
 
 ## Roadmap
 

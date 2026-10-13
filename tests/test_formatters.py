@@ -1,7 +1,7 @@
 from datetime import datetime, timezone
 from types import SimpleNamespace as NS
 
-from mcp_kuber import formatters as fmt
+from kubescout_mcp import formatters as fmt
 
 TS = datetime(2026, 1, 1, tzinfo=timezone.utc)
 
