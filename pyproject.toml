@@ -1,0 +1,20 @@
+[project]
+name = "mcp-kuber"
+version = "0.1.0"
+description = "Read-only Kubernetes MCP server built with FastMCP"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = ["fastmcp>=2.0", "kubernetes>=29.0"]
+
+[project.optional-dependencies]
+dev = ["pytest"]
+
+[project.scripts]
+mcp-kuber = "mcp_kuber.server:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
